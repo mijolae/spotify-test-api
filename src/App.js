@@ -1,6 +1,7 @@
 import React from 'react';
 // import Sharer from './Share';
 import './App.css';
+import MainPage from './components/MainPage';
 
 function App() {
   const tryShare = async () => {
@@ -24,7 +25,7 @@ function App() {
 
   return (
     <div className='App'>
-      {/* <Sharer label="Share" /> */}
+      <MainPage />
       <button onClick={tryShare}>Share</button>
     </div>
   );
