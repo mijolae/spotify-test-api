@@ -14,7 +14,7 @@ const MainPage = () => {
   };
 
   return (
-    <div style={{ height: '100em' }}>
+    <div>
       {!user && <Form onSubmitUser={onSubmitUser} />}
       {user && <ImageToShare user={user} />}
     </div>

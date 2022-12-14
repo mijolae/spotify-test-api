@@ -51,26 +51,25 @@ const Login = () => {
   //   };
 
   return (
-    <MainPage />
-    // <div className='login-body'>
-    //   {!token && (
-    //     <div>
-    //       <h1>Welcome to My Website</h1>
-    //       <p id='homepage-text' className='homepage_text'>
-    //         Find your Christmas wishlist based on your top artists and songs.
-    //       </p>
-    //       <a
-    //         href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&scope=${encodeURIComponent(
-    //           REACT_APP_SPOTIFY_SCOPES
-    //         )}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
-    //         className='login_button'
-    //       >
-    //         Login to Spotify
-    //       </a>
-    //     </div>
-    //   )}
-    //   {token && <MainPage />}
-    // </div>
+    <div className='login-body'>
+      {!token && (
+        <div>
+          <h1>Welcome to My Website</h1>
+          <p id='homepage-text' className='homepage_text'>
+            Find your Christmas wishlist based on your top artists and songs.
+          </p>
+          <a
+            href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&scope=${encodeURIComponent(
+              REACT_APP_SPOTIFY_SCOPES
+            )}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
+            className='login_button'
+          >
+            Login to Spotify
+          </a>
+        </div>
+      )}
+      {/* {token && <MainPage />} */}
+    </div>
   );
 };
 

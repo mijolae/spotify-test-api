@@ -45,7 +45,7 @@ const Form = (props) => {
               <input
                 type='text'
                 id='userName'
-                class='form-control'
+                className='form-control'
                 name='userName'
                 ref={nameRef}
                 placeholder='What is your name?'
@@ -60,7 +60,7 @@ const Form = (props) => {
                 type='text'
                 id='userCity'
                 name='userCity'
-                class='form-control'
+                className='form-control'
                 ref={cityRef}
                 placeholder='What city are you in?'
               />

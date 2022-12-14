@@ -7,7 +7,7 @@
   background-color: #032033;
   color: white;
   min-width: 300px;
-  min-height: 950px;
+  min-height: max-content;
 }
 .form-div {
   display: flex;
