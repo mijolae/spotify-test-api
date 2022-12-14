@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import html2canvas from 'html2canvas';
 
+import './ImageToShare.css';
+
 const ImageToShare = (props) => {
   const interestedInAmbassador = props.user.interestedInAmbassador.toString();
   const sendOhmLink = props.user.sendOhmLink.toString();
@@ -18,15 +20,13 @@ const ImageToShare = (props) => {
     createImage();
   }, []);
 
-  console.log('browser share? ', canShare);
-  console.log('dataURI? ', dataURI);
   const handleDownloadImage = async () => {
     const element = document.getElementById('print'),
       canvas = await html2canvas(element),
       data = canvas.toDataURL('image/jpg'),
       link = document.createElement('a');
     link.href = data;
-    link.download = 'downloaded-image.jpg';
+    link.download = 'ohmAnalysis.jpg';
 
     document.body.appendChild(link);
     link.click();
@@ -51,23 +51,28 @@ const ImageToShare = (props) => {
   };
 
   return (
-    <div>
-      <div id='print'>
-        <section>
-          <p>Your name: {props.user.name}</p>
-          <p>Your city: {props.user.city}</p>
-          <p>Interested in brand ambassador? {interestedInAmbassador}</p>
-          <p>Want the Ohm Link? {sendOhmLink}</p>
-        </section>
+    <div className='share-page'>
+      <div class='print'>
+        <h1 class='header'>{props.user.name}'s wishlist:</h1>
+        <p class='response'>1. Backstage passes to see Che Ecru perform.</p>
+        <p class='response'>
+          2. A new job, with FKJ as {props.user.name}'s manager.
+        </p>
+        <p class='response'>3. A hug - it's been that kind of year.</p>
       </div>
-      <button type='button' onClick={handleDownloadImage}>
-        Download Info
-      </button>
-      {canShare && (
-        <button type='button' onClick={tryShare}>
-          Share Results
+      <div class='buttons'>
+        <button>Download</button>
+        <button>Share</button>
+
+        <button type='button' onClick={handleDownloadImage}>
+          Download Info
         </button>
-      )}
+        {canShare && (
+          <button type='button' onClick={tryShare}>
+            Share Results
+          </button>
+        )}
+      </div>
     </div>
   );
 };

@@ -1,0 +1,224 @@
+.form-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Raleway', sans-serif;
+  background-color: #032033;
+  color: white;
+  min-width: 300px;
+  min-height: 950px;
+}
+.form-div {
+  display: flex;
+  flex-direction: column;
+  max-width: 430px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: 86px;
+  padding-right: 30px;
+  padding-bottom: 86px;
+  padding-left: 30px;
+  font-size: 20px;
+}
+.almost-there-just-need-a-few {
+  max-width: 296px;
+  color: rgb(255, 255, 255);
+  font-size: 24px;
+  letter-spacing: 0%;
+  text-align: left;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+#container {
+  width: 100%;
+}
+
+#form-group {
+  margin-bottom: 1em;
+  transition: all 0.3s;
+}
+
+#form-label {
+  font-size: 1em;
+  float: left;
+  color: white;
+  display: block;
+  opacity: 1;
+  transform: translateY(-1.25em);
+  transform-origin: left;
+  transition: all 0.3s;
+  padding: 1px;
+}
+
+.form-control {
+  box-shadow: none;
+  background-color: transparent;
+  border-radius: 0px;
+  border-color: white;
+  border-style: none none solid none;
+  width: 100%;
+  transition: all 0.5s;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.form-control::placeholder {
+  color: transparent;
+  text-align: left;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  outline: none;
+  border-color: white;
+}
+
+.form-control:focus + #form-label,
+.form-control:not(:placeholder-shown) + #form-label {
+  transform: translateY(-3em) scale(0.8);
+}
+button {
+  display: block;
+  font-size: 20px;
+  border-radius: 4px;
+  margin: auto;
+}
+
+.ohm-is-a-brand-new-way-to-expl {
+  margin-top: 6px;
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  letter-spacing: 0%;
+  text-align: left;
+  font-weight: bold;
+  font-family: 'Archivo', sans-serif;
+}
+
+.checkbox {
+  margin: 0 1em 1em 0;
+}
+
+.wishlist_button {
+  align-self: center;
+}
+
+.wishlist_button button {
+  padding: 0.5em 1em 0.5em 1em;
+  background-color: #1ed760;
+  color: black;
+  text-decoration: none;
+  border-color: none;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.ohm_checkbox {
+  text-align: left;
+}
+
+@media (max-width: 468px) {
+  .div {
+    margin: 0 0 0 0;
+  }
+}
+/* 
+  .div-2 {
+    max-width: 151px;
+    margin-top: 6px;
+    color: rgba(164, 164, 164, 1);
+    font-size: 16px;
+    letter-spacing: 0%;
+    text-align: left;
+    font-family: 'Archivo', sans-serif;
+  }
+  .div-3 {
+    max-width: 232px;
+    margin-top: 6px;
+    color: rgba(47, 47, 47, 1);
+    font-size: 24px;
+    letter-spacing: 0%;
+    text-align: left;
+    font-family: 'Archivo', sans-serif;
+  }
+  .div-4 {
+    display: flex;
+    max-width: 370px;
+    height: 0px;
+    width: 370px;
+    margin-top: 6px;
+    border-color: rgba(163, 163, 163, 1);
+    border-width: 1px;
+    border-style: solid;
+  }
+  .div-5 {
+    max-width: 163px;
+    margin-top: 6px;
+    color: rgba(164, 164, 164, 1);
+    font-size: 16px;
+    letter-spacing: 0%;
+    text-align: left;
+    font-family: 'Archivo', sans-serif;
+  }
+  .div-6 {
+    max-width: 232px;
+    margin-top: 6px;
+    color: rgba(47, 47, 47, 1);
+    font-size: 24px;
+    letter-spacing: 0%;
+    text-align: left;
+    font-family: 'Archivo', sans-serif;
+  }
+  .div-7 {
+    display: flex;
+    max-width: 370px;
+    height: 0px;
+    width: 370px;
+    margin-top: 6px;
+    border-color: rgba(163, 163, 163, 1);
+    border-width: 1px;
+    border-style: solid;
+  }
+ 
+  .div-8 {
+    display: flex;
+    max-width: 24px;
+    height: 24px;
+    width: 24px;
+    margin-top: 6px;
+    border-radius: 4px;
+    border-color: rgba(0, 0, 0, 1);
+    border-width: 2px;
+    border-style: solid;
+    background-color: rgba(0, 0, 0, 1);
+  }
+  .im-interested-in-getting-paid {
+    max-width: 315px;
+    margin-top: 6px;
+    color: rgba(0, 0, 0, 1);
+    font-size: 16px;
+    letter-spacing: 0%;
+    text-align: left;
+    font-family: 'Archivo', sans-serif;
+  }
+  .div-9 {
+    display: flex;
+    max-width: 24px;
+    height: 24px;
+    width: 24px;
+    margin-top: 6px;
+    border-radius: 4px;
+    border-color: rgba(74, 74, 74, 1);
+    border-width: 2px;
+    border-style: solid;
+  }
+  .div-10 {
+    max-width: 315px;
+    margin-top: 6px;
+    color: rgba(0, 0, 0, 1);
+    font-size: 16px;
+    letter-spacing: 0%;
+    text-align: left;
+    font-family: 'Archivo', sans-serif;
+  } */
