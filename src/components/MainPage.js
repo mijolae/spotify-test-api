@@ -3,6 +3,7 @@ import Form from './Form';
 import ImageToShare from './ImageToShare';
 const MainPage = () => {
   const [user, setUser] = useState(null);
+  const [token, setToken] = useState();
 
   useEffect(() => {
     console.log('user updated');
@@ -14,7 +15,13 @@ const MainPage = () => {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        border: '4px solid #000000',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
       {!user && <Form onSubmitUser={onSubmitUser} />}
       {user && <ImageToShare user={user} />}
     </div>

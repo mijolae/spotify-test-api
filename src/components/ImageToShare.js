@@ -1,41 +1,23 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 
 import html2canvas from 'html2canvas';
-
-import './ImageToShare.css';
-import { getDownloadURL, ref } from 'firebase/storage';
-import storage from '../config/firebase';
+import imageSpotify from '../assets/spotifyChristmasResult.jpg';
+import classes from './ImageToShare.module.css';
+import { useLocation } from 'react-router-dom';
 
 const ImageToShare = (props) => {
-  const [backgroundImage, setBackgroundImage] = useState();
-  const [testUrl, setTestUrl] = useState();
-  const interestedInAmbassador = props.user.interestedInAmbassador.toString();
-  const sendOhmLink = props.user.sendOhmLink.toString();
   let canShare = navigator.share;
-  let dataURI = useRef();
+  const { state } = useLocation();
 
-  useEffect(() => {
-    getDownloadURL(ref(storage, 'spotifyChristmasResult.jpg')).then((url) => {
-      setBackgroundImage(url);
-    });
-  }, []);
-
-  async function createImage() {
-    const element = document.getElementById('print'),
-      canvas = await html2canvas(element),
-      data = canvas.toDataURL('image/jpg');
-
-    dataURI.current = data;
-  }
-
+  console.log(state);
   const handleDownloadImage = async () => {
     const element = document.getElementById('print'),
       canvas = await html2canvas(element),
-      data = canvas.toDataURL('image/jpg'),
+      data = canvas.toDataURL('image/png'),
       link = document.createElement('a');
     console.log(data);
     link.href = data;
-    link.download = 'ohmAnalysis.';
+    link.download = 'ohmAnalysis.png';
 
     document.body.appendChild(link);
     link.click();
@@ -43,8 +25,10 @@ const ImageToShare = (props) => {
   };
 
   const tryShare = async () => {
-    createImage();
-    const blob = await fetch(dataURI.current).then((r) => r.blob());
+    const element = document.getElementById('print');
+    const canvas = await html2canvas(element);
+    const data = canvas.toDataURL('image/png');
+    const blob = await fetch(data).then((r) => r.blob());
     const imgFile = new File([blob], 'ohmAnalysis.jpg', {
       type: blob.type,
     });
@@ -61,37 +45,35 @@ const ImageToShare = (props) => {
   };
 
   return (
-    <div className='image-body'>
-      <div className='share-page'>
-        <div id='print'>
-          <section className='article' media='(min-width: 460px)'>
-            <picture className='picture '>
-              <source srcSet={backgroundImage} />
-              <img src={backgroundImage} alt='background' />
-            </picture>
-            <h1 class='header'>
-              {props.user.name}'s wishlist:
-              <p class='response-1'>
-                1. Backstage passes to see Che Ecru perform.
-              </p>
-              <p class='response-2'>
-                2. A new job, with FKJ as {props.user.name}'s manager.
-              </p>
-              <p class='response-3'>3. A hug - it's been that kind of year.</p>
-            </h1>
-          </section>
+    <div className={classes.initialDiv}>
+      <div className={classes.toPrint} id='print'>
+        <span className={classes.backgroundImage}>
+          <img src={imageSpotify} alt='christmas and ohm' />
+        </span>
+        <div className={classes.responses}>
+          <div className={classes.wishlistTitle}>
+            <text>{state.user.name}'s wishlist:</text>
+          </div>
+          <div className={classes.item}>
+            <text>1. Backstage passes to see Che Ecru perform.</text>
+          </div>
+          <div className={classes.item}>
+            <text>2. A new job, with FKJ as {state.user.name}'s manager.</text>
+          </div>
+          <div className={classes.item}>
+            <text>3. A hug - it's been that kind of year.</text>
+          </div>
         </div>
-
-        <div class='buttons'>
-          <button type='button' onClick={handleDownloadImage}>
-            Download Info
+      </div>
+      <div className={classes.downloadButton}>
+        <button type='button' onClick={handleDownloadImage}>
+          Download
+        </button>
+        {canShare && (
+          <button type='button' onClick={tryShare}>
+            Share Results
           </button>
-          {canShare && (
-            <button type='button' onClick={tryShare}>
-              Share Results
-            </button>
-          )}
-        </div>
+        )}
       </div>
     </div>
   );

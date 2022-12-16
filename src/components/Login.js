@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { redirect } from 'react-router-dom';
 // import Quiz from './Quiz';
 // import Results from './Results';
 // import axios from 'axios';
-import './Login.css';
-import MainPage from './MainPage';
+import classes from './Login.module.css';
 
 const Login = () => {
   const CLIENT_ID = '527cea77524647c084bece1e8c7e1279';
-  const REDIRECT_URI = 'https://localhost:3000'; // should redirect to connectwithohm.com/spotifyquiz
+  const REDIRECT_URI = 'https://192.168.1.125:3000/form'; // should redirect to connectwithohm.com/spotifyquiz
   const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize';
   const RESPONSE_TYPE = 'token';
 
@@ -20,7 +20,7 @@ const Login = () => {
     const hash = window.location.hash;
     let token = window.localStorage.getItem('token');
 
-    if (!token && hash) {
+    function getToken() {
       token = hash
         .substring(1)
         .split('&')
@@ -29,10 +29,15 @@ const Login = () => {
 
       window.location.hash = '';
       window.localStorage.setItem('token', token);
+      setToken(token);
     }
 
-    setToken(token);
-  }, []);
+    if (!token && hash) {
+      getToken();
+    } else if (token) {
+      redirect('form');
+    }
+  }, [token]);
 
   //   const getUserTopItems = async () => {
   //     const { data } = await axios.get(
@@ -51,24 +56,23 @@ const Login = () => {
   //   };
 
   return (
-    <div className='login-body'>
+    <div className={classes.login_body}>
       {!token && (
         <div>
           <h1>Welcome to My Website</h1>
-          <p id='homepage-text' className='homepage_text'>
+          <p id='homepage_text' className={classes.homepage_text}>
             Find your Christmas wishlist based on your top artists and songs.
           </p>
           <a
             href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&scope=${encodeURIComponent(
               REACT_APP_SPOTIFY_SCOPES
             )}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
-            className='login_button'
+            className={classes.login_button}
           >
             Login to Spotify
           </a>
         </div>
       )}
-      {/* {token && <MainPage />} */}
     </div>
   );
 };

@@ -1,20 +1,21 @@
-.login-body {
-  display: grid;
+.login_body {
+  display: flex;
   justify-content: center;
   font-family: 'Archivo', Arial;
   text-align: center;
-  font-size: 4vw;
+  font-size: 24px;
   background-color: #032033;
   color: white;
-  margin: 6vw;
-  max-height: 5em;
+  margin: 0 0 0 0;
+  height: 100vh;
 }
 
-.homepage_text {
+#homepage_text {
   text-align: center;
   font-weight: bold;
-  font-size: 5vw;
-  margin: 1em 0 1em 0;
+  font-size: 26px;
+  text-align: center;
+  margin: 5em 18em 10em 18em;
   color: #ffffff;
 }
 
@@ -23,6 +24,7 @@
   padding: 10px 20px;
   background-color: #1ed760;
   color: black;
+  box-shadow: 3px 3px 10px black;
   text-decoration: none;
   border-radius: 4px;
   font-weight: bold;
